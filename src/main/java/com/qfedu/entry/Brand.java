@@ -20,6 +20,8 @@ public class Brand {
     public Brand() {
     }
 
+
+
     public Brand(Integer id, String brandName, String brandDesc, Integer attention, String country) {
         this.id = id;
         this.brandName = brandName;
