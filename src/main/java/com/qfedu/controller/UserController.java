@@ -55,12 +55,12 @@ public class UserController {
         return user;
     }
 
-    @RequestMapping("/exit")
+    /*@RequestMapping("/exit")
     @ResponseBody
     @ApiOperation("退出方法，退出并删除相应信息")
     public void exit(HttpSession session){
         session.removeAttribute("USERNAME");
     }
-
+*/
 
 }
