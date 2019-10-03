@@ -1,6 +1,7 @@
 package com.qfedu.controller;
 
 
+import com.qfedu.entry.User;
 import com.qfedu.service.UserService;
 import com.qfedu.utils.Md5Utils;
 import io.swagger.annotations.Api;
@@ -43,32 +44,23 @@ public class UserController {
     }
 
 
+    @RequestMapping(value = "/showUser",method = {RequestMethod.POST,RequestMethod.GET})
+    @ResponseBody
+    @ApiOperation("设置信息传递")
+    public User showUser(HttpSession session) {
 
+        String userName = (String) session.getAttribute("USERNAME");
+        User user = userService.selectByUserName(userName);
+        System.out.println(user);
+        return user;
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    @RequestMapping("/exit")
+    @ResponseBody
+    @ApiOperation("退出方法，退出并删除相应信息")
+    public void exit(HttpSession session){
+        session.removeAttribute("USERNAME");
+    }
 
 
 }

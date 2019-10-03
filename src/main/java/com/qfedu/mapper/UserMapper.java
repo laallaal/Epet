@@ -1,5 +1,6 @@
 package com.qfedu.mapper;
 
+
 import com.qfedu.entry.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Result;
@@ -7,7 +8,6 @@ import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.SelectKey;
 
 public interface UserMapper {
-
 
 
     @Results(id = "userMap" ,
