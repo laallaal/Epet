@@ -1,7 +1,6 @@
 package com.qfedu.controller;
 
 
-import com.qfedu.entry.User;
 import com.qfedu.service.UserService;
 import com.qfedu.utils.Md5Utils;
 import io.swagger.annotations.Api;
@@ -42,6 +41,34 @@ public class UserController {
 
         return "login.html";
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }
