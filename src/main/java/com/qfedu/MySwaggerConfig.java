@@ -27,7 +27,11 @@ public class MySwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
+<<<<<<< HEAD
                 .title("Epet")
+=======
+                .title("EPet项目接口API 文档")
+>>>>>>> origin/master
                 .description("HTTP对外开放接口")
                 .version("1.0.0")
                 .termsOfServiceUrl("http://xxx.xxx.com")
