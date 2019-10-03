@@ -29,4 +29,5 @@ public class Brand {
         this.attention = attention;
         this.country = country;
     }
+
 }

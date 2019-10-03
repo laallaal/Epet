@@ -14,6 +14,7 @@ public class UserServiceImpl implements UserService {
     UserMapper userMapper;
 
 
+
     @Override
     public boolean addUser(User user) {
 
@@ -26,6 +27,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User selectByUserName(String userName) {
-        return null;
+        return mapper.selectByUserName(userName);
     }
 }
