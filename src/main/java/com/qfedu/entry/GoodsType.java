@@ -10,13 +10,25 @@ public class GoodsType {
     private Integer id;
     @ApiModelProperty(value = "商品类型",name = "typeName",required = true,dataType = "String")
     private String typeName;
+    private int hot;
 
     public GoodsType() {
     }
 
-    public GoodsType(Integer id, String typeName) {
+
+    public GoodsType(Integer id, String typeName, int hot) {
         this.id = id;
         this.typeName = typeName;
+        this.hot = hot;
     }
 
+
+    @Override
+    public String toString() {
+        return "GoodsType{" +
+                "id=" + id +
+                ", typeName='" + typeName + '\'' +
+                ", hot=" + hot +
+                '}';
+    }
 }
