@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qfedu.mapper.AttentionMapper" >
+  <resultMap id="attentionMap" type="attention" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="userName" property="username" jdbcType="INTEGER" />
+    <result column="bid" property="bid" jdbcType="INTEGER" />
+
+  </resultMap>
+
+  <select id="selectByUserName" parameterType="String" resultType="integer" >
+    select bid from attention where userName = #{userName}
+  </select>
+  <select id="selectByBid" parameterType="integer" resultType="integer">
+    select count(1) from attention where bid = #{bid}
+  </select>
+</mapper>
