@@ -14,20 +14,11 @@ public class Brand {
     private String brandDesc;
     @ApiModelProperty(value = "品牌关注量",name = "attention",required = false,dataType = "Integer")
     private Integer attention;
-    @ApiModelProperty(value = "品牌产地",name = "country",required = false,dataType = "String")
+    @ApiModelProperty(value = "品牌所属国家",name = "country",required = false,dataType = "String")
     private String country;
 
     public Brand() {
     }
 
-
-
-    public Brand(Integer id, String brandName, String brandDesc, Integer attention, String country) {
-        this.id = id;
-        this.brandName = brandName;
-        this.brandDesc = brandDesc;
-        this.attention = attention;
-        this.country = country;
-    }
 
 }
