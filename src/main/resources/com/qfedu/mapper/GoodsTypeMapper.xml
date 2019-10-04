@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qfedu.mapper.GoodsTypeMapper" >
+    <resultMap id="BaseResultMap" type="com.qfedu.entry.GoodsType" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="typeName" property="typeName" jdbcType="VARCHAR" />
+        <result property="hot" column="hot"/>
+    </resultMap>
+
+    <update id="addHot" parameterType="string">
+        update goodstype set hot = hot+1 where typeName = #{typeName}
+    </update>
+
+    <update id="addHotById" parameterType="integer">
+        update goodstype set hot = hot+1 where id = #{id}
+    </update>
+
+</mapper>

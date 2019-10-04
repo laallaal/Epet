@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qfedu.mapper.GoodsMapper">
+    <resultMap id="BaseResultMap" type="com.qfedu.entry.Goods">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="goodsName" property="goodsName" jdbcType="VARCHAR"/>
+        <result column="price" property="price" jdbcType="DOUBLE"/>
+        <result column="goodsTypeId" property="goodsTypeId" jdbcType="INTEGER"/>
+        <result column="goodsImg" property="goodsImg" jdbcType="VARCHAR"/>
+        <result column="goodsDesc" property="goodsDesc" jdbcType="VARCHAR"/>
+        <result column="kindId" property="kindId" jdbcType="INTEGER"/>
+        <result column="brandId" property="brandId" jdbcType="INTEGER"/>
+
+        <association property="goodsType" javaType="com.qfedu.entry.GoodsType">
+            <id property="id" column="typeId"/>
+            <result property="typeName" column="typeName"/>
+        </association>
+    </resultMap>
+
+    <select id="queryGoodsByType" parameterType="string" resultMap="BaseResultMap">
+        select g.*, gt.id as typeId, gt.typeName, gt.hot from goods g,goodstype gt where g.goodsTypeId = gt.id
+          and g.goodsTypeId in (select id from goodstype where typeName = #{typeName})
+    </select>
+
+    <select id="selectGoodsByName" parameterType="string" resultMap="BaseResultMap">
+        select * from goods where goodsName like concat('%', #{brandName}, '%')
+    </select>
+
+    <select id="queryGoodsByTypeId" parameterType="integer" resultMap="BaseResultMap">
+        select g.*, gt.id as typeId, gt.typeName, gt.hot from goods g,goodstype gt where g.goodsTypeId = gt.id
+          and g.goodsTypeId = #{typeId}
+    </select>
+
+</mapper>

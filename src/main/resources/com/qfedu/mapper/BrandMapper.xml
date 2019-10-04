@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qfedu.mapper.BrandMapper">
+    <resultMap id="BaseResultMap" type="com.qfedu.entry.Brand">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="brandName" property="brandName" jdbcType="VARCHAR"/>
+        <result column="brandDesc" property="brandDesc" jdbcType="VARCHAR"/>
+        <result column="attention" property="attention" jdbcType="INTEGER"/>
+        <result column="country" property="country"/>
+    </resultMap>
+
+    <select id="selectBrand" parameterType="string" resultMap="BaseResultMap">
+        select * from brand where brandName like concat('%', #{brandName}, '%')
+    </select>
+
+    <select id="selectBrandById" parameterType="integer" resultMap="BaseResultMap">
+        select * from brand where id = #{id}
+    </select>
+
+</mapper>
