@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qfedu.mapper.BrandMapper" >
+  <resultMap id="brandMap" type="brand" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="brandName" property="brandName" jdbcType="VARCHAR" />
+    <result column="brandDesc" property="brandDesc" jdbcType="VARCHAR" />
+    <result column="attention" property="attention" jdbcType="INTEGER" />
+    <result column="country" property="country" jdbcType="VARCHAR" />
+    <collection property="attention" ofType="integer"
+                select="com.qfedu.mapper.AttentionMapper.selectByBid" column="id" >
+    </collection>
+  </resultMap>
+  <update id="updateBrandByBrandId" parameterType="brand" >
+    update brand
+    <set >
+      <if test="brandname != null" >
+        brandName = #{brandname,jdbcType=VARCHAR},
+      </if>
+      <if test="branddesc != null" >
+        brandDesc = #{branddesc,jdbcType=VARCHAR},
+      </if>
+      <if test="attention != null" >
+        attention = #{attention,jdbcType=INTEGER},
+      </if>
+      <if test="country != null" >
+        country = #{country,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectBrandAll" resultMap="brandMap">
+    select * from brand
+  </select>
+  <select id="selectBatchByBrandId" parameterType="user" resultMap="brandMap">
+    select * from brand where id in
+    <foreach collection="bids" item="id" separator="," open="(" close=")">
+      #{id}
+    </foreach>
+  </select>
+</mapper>
