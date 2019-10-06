@@ -53,4 +53,11 @@
   <select id="selectByUserName" parameterType="String" resultMap="userMap">
     select * from user where userName=#{userName}
   </select>
+
+
+  <select id="countByUser" parameterType="com.qfedu.entry.User" resultType="int" >
+    select count(*) from user where userName = #{userName} and password = #{password}
+  </select>
+
+
 </mapper>

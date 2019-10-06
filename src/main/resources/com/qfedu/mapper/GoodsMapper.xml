@@ -17,18 +17,25 @@
         </association>
     </resultMap>
 
-    <select id="queryGoodsByType" parameterType="string" resultMap="BaseResultMap">
-        select g.*, gt.id as typeId, gt.typeName, gt.hot from goods g,goodstype gt where g.goodsTypeId = gt.id
-          and g.goodsTypeId in (select id from goodstype where typeName = #{typeName})
-    </select>
 
-    <select id="selectGoodsByName" parameterType="string" resultMap="BaseResultMap">
-        select * from goods where goodsName like concat('%', #{brandName}, '%')
-    </select>
 
     <select id="queryGoodsByTypeId" parameterType="integer" resultMap="BaseResultMap">
         select g.*, gt.id as typeId, gt.typeName, gt.hot from goods g,goodstype gt where g.goodsTypeId = gt.id
           and g.goodsTypeId = #{typeId}
+    </select>
+
+
+    <select id="selectGoodsBySelective" parameterType="string" resultMap="BaseResultMap">
+        select * from goods
+    <where>
+        <if test="goodsName != null and goodsName != '' ">
+            and goodsName like concat('%',#{input},'%')
+        </if>
+    </where>
+
+    </select>
+    <select id="selectGoodsById" parameterType="int" resultMap="BaseResultMap">
+        select * from Goods where id = #{id}
     </select>
 
 </mapper>

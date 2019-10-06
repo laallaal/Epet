@@ -5,8 +5,10 @@
         <id column="id" property="id" jdbcType="INTEGER"/>
         <result column="brandName" property="brandName" jdbcType="VARCHAR"/>
         <result column="brandDesc" property="brandDesc" jdbcType="VARCHAR"/>
-        <result column="attention" property="attention" jdbcType="INTEGER"/>
         <result column="country" property="country"/>
+        <collection property="attention" ofType="integer"
+                    select="com.qfedu.mapper.AttentionMapper.selectByBid" column="id" >
+        </collection>
     </resultMap>
 
     <select id="selectBrand" parameterType="string" resultMap="BaseResultMap">
@@ -15,6 +17,19 @@
 
     <select id="selectBrandById" parameterType="integer" resultMap="BaseResultMap">
         select * from brand where id = #{id}
+    </select>
+
+
+    <select id="selectBrandAll" resultMap="BaseResultMap">
+        select * from brand
+    </select>
+
+
+    <select id="selectBatchByBrandId" parameterType="user" resultMap="BaseResultMap">
+        select * from brand where id in
+        <foreach collection="bids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
     </select>
 
 </mapper>
