@@ -1,9 +1,11 @@
 package com.qfedu.controller;
 
 import com.qfedu.entry.Brand;
+import com.qfedu.entry.Json;
 import com.qfedu.entry.User;
 import com.qfedu.service.AttentionService;
 import com.qfedu.service.BrandService;
+import com.qfedu.utils.JsonSetUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,22 +28,31 @@ public class BrandController {
     @ApiOperation("查询所有品牌的信息")
     @RequestMapping(value = "selectBrandAll",method = {RequestMethod.POST,RequestMethod.GET})
     @ResponseBody
-    public List<Brand> selectBrandAll() {
+    public Json selectBrandAll() {
+        Json json = new Json();
         List<Brand> brands = brandService.selectBrandAll();
+        json.setMsg("查询所有品牌的信息");
+        json.setData(brands);
         System.out.println(brands);
-        return brands;
+        return json;
     }
 
     @ApiOperation("我关注的品牌")
     @RequestMapping(value = "/myAttention", method = {RequestMethod.POST,RequestMethod.GET})
     @ResponseBody
-    private List<Brand> myAttention(HttpSession session) {
+    private Json myAttention(HttpSession session) {
         String userName = (String) session.getAttribute("USERNAME");
         List<Integer> bidList = attentionService.selectByUserName(userName);
-        User user = new User();
-        user.setBids(bidList);
+        if (bidList != null) {
+            User user = new User();
+            user.setBids(bidList);
+            List<Brand> brands= brandService.selectBatchByBrandId(user);
+            return JsonSetUtils.getJson("1", "我关注的品牌", brands);
+        }
+        return JsonSetUtils.getJson("0","该用户为关注品牌",null);
 
-        List<Brand> brands= brandService.selectBatchByBrandId(user);
-        return brands;
     }
+
+
+
 }
