@@ -15,27 +15,40 @@
             <id property="id" column="typeId"/>
             <result property="typeName" column="typeName"/>
         </association>
+
+        <association property="brand" javaType="com.qfedu.entry.Brand">
+            <id property="id" column="brandId"/>
+            <result property="brandName" column="brandName"/>
+        </association>
+
     </resultMap>
 
 
 
     <select id="queryGoodsByTypeId" parameterType="integer" resultMap="BaseResultMap">
         select g.*, gt.id as typeId, gt.typeName, gt.hot from goods g,goodstype gt where g.goodsTypeId = gt.id
-          and g.goodsTypeId = #{typeId}
+                                                                                     and g.goodsTypeId = #{typeId}
     </select>
 
 
     <select id="selectGoodsBySelective" parameterType="string" resultMap="BaseResultMap">
-        select * from goods
-    <where>
-        <if test="goodsName != null and goodsName != '' ">
-            and goodsName like concat('%',#{input},'%')
-        </if>
-    </where>
+        select * from goods where goodsName like concat('%',#{goodsName},'%')
 
     </select>
-    <select id="selectGoodsById" parameterType="int" resultMap="BaseResultMap">
-        select * from Goods where id = #{id}
+
+
+    <select id="selectGoodsById" parameterType="integer" resultMap="BaseResultMap">
+        select g.*, gt.id as typeId,gt.typeName,b.brandName from goods g
+                                                                     left join goodstype gt on g.goodsTypeId = gt.id
+                                                                     left join brand b on g.brandId = b.id
+        where g.id = #{id}
     </select>
+
+
+    <select id="selectAllGoods" resultMap="BaseResultMap">
+        select * from goods
+    </select>
+
+
 
 </mapper>

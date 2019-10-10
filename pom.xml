@@ -116,6 +116,7 @@
                 <version>${jackson.version}</version>
             </dependency>
 
+
             <dependency>
                 <groupId>commons-fileupload</groupId>
                 <artifactId>commons-fileupload</artifactId>
@@ -125,6 +126,11 @@
                 <groupId>log4j</groupId>
                 <artifactId>log4j</artifactId>
                 <version>1.2.17</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-log4j12</artifactId>
+                <version>1.6.6</version>
             </dependency>
             <dependency>
                 <groupId>mysql</groupId>
@@ -185,6 +191,17 @@
                 <artifactId>aspectjweaver</artifactId>
                 <version>1.8.13</version>
             </dependency>
+            <dependency>
+                <groupId>com.aliyun</groupId>
+                <artifactId>aliyun-java-sdk-core</artifactId>
+                <version>4.0.6</version> <!-- 注：如提示报错，先升级基础包版，无法解决可联系技术支持 -->
+            </dependency>
+
+            <dependency>
+                <groupId>com.aliyun</groupId>
+                <artifactId>aliyun-java-sdk-dysmsapi</artifactId>
+                <version>1.1.0</version>
+            </dependency>
         </dependencies>
 
 
@@ -205,9 +222,9 @@
                 <version>2.1</version>
                 <configuration>
                     <!--该项目将来启动后占用哪个端口号-->
-                    <port>80</port>
+                    <port>8080</port>
                     <!--访问该项目的虚拟路径名-->
-                    <path>/EPet</path>
+                    <path>/Epet</path>
                     <uriEncoding>UTF-8</uriEncoding>
                     <server>tomcat7</server>
                 </configuration>

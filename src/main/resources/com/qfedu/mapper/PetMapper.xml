@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qfedu.mapper.PetMapper" >
+  <resultMap id="BaseResultMap" type="com.qfedu.entry.Pet" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="petName" property="petName" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="kindName" property="kindName" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="DATE" />
+    <result column="vaccineTime" property="vaccineTime" jdbcType="DATE" />
+    <result column="userName" property="userName"/>
+  </resultMap>
+
+  <select id="selectPetByUserName" parameterType="string" resultMap="BaseResultMap">
+    select * from pet where userName = #{userName}
+  </select>
+
+  <update id="updatePetBySelective" parameterType="com.qfedu.entry.Pet" >
+    update pet
+    <set >
+      <if test="petName != null" >
+        petName = #{petName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="kindName != null" >
+        kindName = #{kindName,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="vaccineTime != null" >
+        vaccineTime = #{vaccineTime,jdbcType=DATE},
+      </if>
+    </set>
+    where userName = #{userName}
+  </update>
+
+</mapper>

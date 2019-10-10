@@ -27,8 +27,9 @@
             <tx:method name="get*" read-only="true"  propagation="REQUIRED"/>
             <tx:method name="select*" read-only="true"  propagation="REQUIRED"/>
             <tx:method name="isLogin" read-only="false" propagation="REQUIRED"/>
+            <tx:method name="addOrder" read-only="false" propagation="REQUIRED"/>
             <!-- 针对其余的方法 -->
-            <tx:method name="*" propagation="NOT_SUPPORTED"/>
+           <!-- <tx:method name="*" propagation="NOT_SUPPORTED"/>-->
 
         </tx:attributes>
     </tx:advice>

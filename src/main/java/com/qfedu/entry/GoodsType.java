@@ -7,28 +7,27 @@ import lombok.Data;
 @Data
 @ApiModel(value = "GoodsType实体", description = "用于接收和传递商品类型信息")
 public class GoodsType {
+
+
     private Integer id;
+
     @ApiModelProperty(value = "商品类型",name = "typeName",required = true,dataType = "String")
     private String typeName;
+
     private int hot;
+
+    private String goodsTypeImg;
+
+    private int directoryId;
+
+
+
 
     public GoodsType() {
     }
 
 
-    public GoodsType(Integer id, String typeName, int hot) {
-        this.id = id;
-        this.typeName = typeName;
-        this.hot = hot;
-    }
 
 
-    @Override
-    public String toString() {
-        return "GoodsType{" +
-                "id=" + id +
-                ", typeName='" + typeName + '\'' +
-                ", hot=" + hot +
-                '}';
-    }
+
 }

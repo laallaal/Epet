@@ -5,14 +5,15 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 @ApiModel(value = "user实体", description = "用于接收和传递用户信息")
 public class User {
     private Integer id;
-    @ApiModelProperty(value = "用户名",name = "userName",required = true,dataType = "String")
+    @ApiModelProperty(value = "用户名",name = "userName",dataType = "String")
     private String userName;
-    @ApiModelProperty(value = "密码",name = "password",required = true,dataType = "String")
+    @ApiModelProperty(value = "密码",name = "password",dataType = "String")
     private String password;
     @ApiModelProperty(value = "手机号",name = "phone",dataType = "String")
     private String phone;
@@ -30,6 +31,17 @@ public class User {
     private Double money;
     @ApiModelProperty(value = "宠物id",name = "petId",dataType = "Integer")
     private Integer petId;
+
+    @ApiModelProperty(value = "E宠币",name = "eMoney",dataType = "Double")
+    private Double eMoney;
+    @ApiModelProperty(value = "红包",name = "redPacket",dataType = "Double")
+    private Double redPacket;
+    @ApiModelProperty(value = "关注品牌",name = "brands",dataType = "List<Brand>")
+    private List<Brand> brands;
+    @ApiModelProperty(value = "关注品牌id",name = "bids",dataType = "List<Integer>")
+    private List<Integer> bids;
+    @ApiModelProperty(value = "优惠券个数",name = "discountCouponCount",dataType = "Integer")
+    private Integer discountCouponCount;
 
     public User() {
     }

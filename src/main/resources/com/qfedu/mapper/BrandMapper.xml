@@ -31,5 +31,9 @@
             #{id}
         </foreach>
     </select>
+    <select id="selectAllBrandIdByDirectoryId" parameterType="int"  resultMap="BaseResultMap">
+        select * from brand  where directoryId = #{directoryId}
+    </select>
+
 
 </mapper>

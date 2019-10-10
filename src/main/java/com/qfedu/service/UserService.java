@@ -7,5 +7,13 @@ public interface UserService {
 
     boolean addUser(User user);
 
-    User selectByUserName(String userName);
+    public User selectByUserName(String userName);
+
+    Integer updateByUserName(User user);
+
+
+    int countByUser(User user);
 }
+
+
+

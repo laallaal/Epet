@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qfedu.mapper.OrderMapper" >
+  <resultMap id="BaseResultMap" type="Order" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="orderCode" property="orderCode" jdbcType="VARCHAR" />
+    <result column="totalPrice" property="totalPrice" jdbcType="DOUBLE" />
+    <result column="createDate" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="userName" property="userName" jdbcType="VARCHAR" />
+    <result column="statusId" property="statusId" jdbcType="INTEGER" />
+    <collection property="orderGoods" ofType="OrderGoods"
+                select="com.qfedu.mapper.OrderGoodsMapper.selectByOrderCode" column="orderCode" >
+    </collection>
+  </resultMap>
+  <select id="selectByAllCondition" parameterType="Order" resultMap="BaseResultMap">
+        select * from `order` where userName = #{userName}
+        <if test="statusId != null and statusId != 0">
+            and statusId = #{statusId}
+        </if>
+  </select>
+    <insert id="addOrder" parameterType="Order" >
+        insert into `order` values (null,#{orderCode},#{totalPrice},#{createDate},#{userName},#{statusId})
+    </insert>
+</mapper>

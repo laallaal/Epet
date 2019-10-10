@@ -31,4 +31,8 @@ public interface UserMapper {
 
 
 
+    User selectByUserName(String userName);
+    Integer updateUserByUserName(User user);
+
+    int countByUser(User user);
 }

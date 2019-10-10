@@ -10,22 +10,19 @@ public class Cat {
     private Integer id;
     @ApiModelProperty(value = "商品id",name = "gid",required = true,dataType = "Integer")
     private Integer gid;
-    @ApiModelProperty(value = "用户id",name = "uid",required = true,dataType = "Integer")
-    private Integer uid;
+    @ApiModelProperty(value = "用户名",name = "uName",required = true,dataType = "Integer")
+    private String uName;
     @ApiModelProperty(value = "商品数量",name = "num",required = true,dataType = "Integer")
     private Integer num;
     @ApiModelProperty(value = "商品是否付费，付费为0，未付费为1",name = "isDelete",required = true,dataType = "Integer")
     private Integer isDelete;
 
-    public Cat() {
-    }
+    @ApiModelProperty(value = "商品",name = "goods",required = false,dataType = "Goods")
+    private Goods goods;
 
-    public Cat(Integer id, Integer gid, Integer uid, Integer num, Integer isDelete) {
-        this.id = id;
-        this.gid = gid;
-        this.uid = uid;
-        this.num = num;
-        this.isDelete = isDelete;
+
+
+    public Cat() {
     }
 
 }

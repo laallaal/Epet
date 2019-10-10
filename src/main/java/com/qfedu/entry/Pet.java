@@ -10,15 +10,15 @@ import java.util.Date;
 @ApiModel(value = "pet实体", description = "用于接收和传递宠物信息")
 public class Pet {
     private Integer id;
-    @ApiModelProperty(value = "宠物名称",name = "petName",required = true,dataType = "String")
+    @ApiModelProperty(value = "宠物名称",name = "petName",dataType = "String")
     private String petName;
-    @ApiModelProperty(value = "宠物性别",name = "sex",required = true,dataType = "String")
+    @ApiModelProperty(value = "宠物性别",name = "sex",dataType = "String")
     private String sex;
-    @ApiModelProperty(value = "宠物种类",name = "kindName",required = true,dataType = "String")
+    @ApiModelProperty(value = "宠物种类",name = "kindName",dataType = "String")
     private String kindName;
-    @ApiModelProperty(value = "宠物出生日期",name = "birthday",required = true,dataType = "Date")
+    @ApiModelProperty(value = "宠物出生日期",name = "birthday",dataType = "Date")
     private Date birthday;
-    @ApiModelProperty(value = "宠物打疫苗时间",name = "vaccineTime",required = false,dataType = "Date")
+    @ApiModelProperty(value = "宠物打疫苗时间",name = "vaccineTime",dataType = "Date")
     private Date vaccineTime;
 
     public Pet() {

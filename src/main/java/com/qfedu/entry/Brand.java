@@ -8,26 +8,21 @@ import lombok.Data;
 @ApiModel(value = "brand实体", description = "用于接收和传递品牌信息")
 public class Brand {
     private Integer id;
-    @ApiModelProperty(value = "品牌名称",name = "brandName",required = true,dataType = "String")
+    @ApiModelProperty(value = "品牌名称",name = "brandName",required = false,dataType = "String")
     private String brandName;
-    @ApiModelProperty(value = "品牌简介",name = "brandDesc",required = true,dataType = "String")
+    @ApiModelProperty(value = "品牌简介",name = "brandDesc",required = false,dataType = "String")
     private String brandDesc;
     @ApiModelProperty(value = "品牌关注量",name = "attention",required = false,dataType = "Integer")
     private Integer attention;
-    @ApiModelProperty(value = "品牌产地",name = "country",required = false,dataType = "String")
+    @ApiModelProperty(value = "品牌所属国家",name = "country",required = false,dataType = "String")
     private String country;
+
+    private String brandImg;
+
+    private int directoryId;
 
     public Brand() {
     }
 
-
-
-    public Brand(Integer id, String brandName, String brandDesc, Integer attention, String country) {
-        this.id = id;
-        this.brandName = brandName;
-        this.brandDesc = brandDesc;
-        this.attention = attention;
-        this.country = country;
-    }
 
 }

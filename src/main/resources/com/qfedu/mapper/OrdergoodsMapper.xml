@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.mapper.OrderGoodsMapper">
+  <resultMap id="BaseResultMap" type="OrderGoods">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="orderCode" jdbcType="VARCHAR" property="orderCode" />
+    <result column="gid" jdbcType="INTEGER" property="gid" />
+    <result column="num" jdbcType="INTEGER" property="num" />
+    <collection property="goods" ofType="Goods"
+                select="com.qfedu.mapper.GoodsMapper.selectGoodsById" column="gid" >
+    </collection>
+  </resultMap>
+ <select id="selectByOrderCode" parameterType="String" resultMap="BaseResultMap">
+   select * from orderGoods where orderCode = #{orderCode}
+ </select>
+  <insert id="addOrderGoods" parameterType="Cat" >
+    insert into orderGoods values(null, #{orderCode},#{gid},#{num})
+  </insert>
+</mapper>
