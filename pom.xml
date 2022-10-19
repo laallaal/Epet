@@ -17,7 +17,7 @@
         <log4j.version>1.2.12</log4j.version>
         <servlet.version>3.1.0</servlet.version>
         <jsp.version>2.0</jsp.version>
-        <jackson.version>2.9.6</jackson.version>
+        <jackson.version>2.13.4.1</jackson.version>
     </properties>
     <!--在父工程中写上各个jar包的版本，将来子工程中只需要写 g a-->
         <dependencies>
